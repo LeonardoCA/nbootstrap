@@ -49,13 +49,13 @@ class FlashMessagesControl extends \Nette\Application\UI\Control
 {
 	/**
 	 * Render Flash Messages
-	 * @param closeIcon bool display close icon default TRUE
+	 * @param closeIcon bool display close icon default true
 	 */
-	public function render($closeIcon = TRUE)
+	public function render($closeIcon = true)
 	{
 		foreach($this->parent->getTemplate()->flashes as $flash) {
 			$flashMessage = Html::el('div');
-			$flashMessage->class = array("alert", $flash->type ? 'alert-'.$flash->type : NULL);
+			$flashMessage->class = array("alert", $flash->type ? 'alert-'.$flash->type : null);
 			$flashMessage->add('<a class="close" data-dismiss="alert" href="#">×</a>');
 			$flashMessage->add($flash->message);				
 			echo $flashMessage;

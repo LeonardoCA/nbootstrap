@@ -1,0 +1,8 @@
+<div n:tag-if="$wrap" class="{$wrapperClass}">
+	<ul class="nav nav-list" n:inner-foreach="$items as $item">
+		<li n:if="$item['type'] == 'divider'" class="divider"></li>
+		<li n:if="$item['type'] == 'link'" n:class="$presenter->isLinkCurrent($item['link']) ? active"><a href="{$item['link']}">{$item['title']}</a></li>
+		<li n:if="$item['type'] == 'header'" class="nav-header">{$item['text']}</li>
+		{if $item['type'] == 'control'}{control $item['name']}{/if} 
+	</ul>
+</div>

@@ -29,9 +29,9 @@ class Alerts extends \Nette\Application\UI\Control
 	/**
 	 * @param string $message Your message, it may be even html element which will not be escaped while rendering
 	 * @param string $type Bootstrap alert class, but instead of "alert alert-success" use just "success"
-	 * @param bool $dismiss display close icon default FALSE
+	 * @param bool $dismiss display close icon default false
 	 */
-	public function add($message, $type = NULL, $dismiss = FALSE)
+	public function add($message, $type = null, $dismiss = false)
 	{
 	    $this->alerts[] = array('message' => $message, 'type' => $type, 'dismiss' => $dismiss);
 	}
@@ -66,7 +66,7 @@ class Alerts extends \Nette\Application\UI\Control
 	 *
 	 * @return \Nette\Templating\FileTemplate
 	 */
-	protected function createTemplate($class = NULL)
+	protected function createTemplate($class = null)
 	{
 		$template = parent::createTemplate($class);
 		$class = $this->getReflection();

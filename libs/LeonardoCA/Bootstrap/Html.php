@@ -13,16 +13,6 @@ namespace LeonardoCA\Bootstrap;
 /**
  * Extends Nette\Utils\Html allowing to generate Bootstrap elements easily
  * 
- * Example:
- * - used to generate alert message
- * 
- *                        $alerts->add(
- *                                        "Page id: ".\LeonardoCA\Bootstrap\Html::bsLabel($id, 'info')." was "
- *                                        .\LeonardoCA\Bootstrap\Html::bsLabel('deleted!', 'important')." You may "
- *                                        .\LeonardoCA\Bootstrap\Html::bsLinkMini('undelete it', $this->link('undelete!', array('id' => $id)), 'primary'), 'info'
- *                        );
- * 
- * 
  * @author LeonardoCA
  */
 class Html extends \Nette\Utils\Html
@@ -86,7 +76,7 @@ class Html extends \Nette\Utils\Html
 	 * @param string|\LeonardoCA\Bootstrap\Html $iconAfter  Accepts Icon name without 'icon-' preffix or Icon Html element
 	 * @return \LeonardoCA\Bootstrap\Html provides a fluent interface
 	 */
-	public static function bsButton($el, $label, $class = NULL, $iconBefore = NULL, $iconAfter = NULL)
+	public static function bsButton($el, $label, $class = null, $iconBefore = null, $iconAfter = null)
 	{
 		$_el = self::el($el);
 		
@@ -128,7 +118,7 @@ class Html extends \Nette\Utils\Html
 	 * @param string|\LeonardoCA\Bootstrap\Html $iconAfter  Accepts Icon name without 'icon-' preffix or Icon Html element
 	 * @return \LeonardoCA\Bootstrap\Html provides a fluent interface
 	 */
-	public static function bsLinkMini($label, $href, $class = NULL, $iconBefore = NULL, $iconAfter = NULL)
+	public static function bsLinkMini($label, $href, $class = null, $iconBefore = null, $iconAfter = null)
 	{
 	    $_el = self::bsButton('a', $label, 'btn btn-mini'.($class ? ' btn-'.$class : ''), $iconBefore, $iconAfter);
 	    $_el->setHref($href);

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of Twitter Bootstrap Extension for Nette
  *
@@ -14,70 +13,70 @@ use Nette\ComponentModel\IContainer;
 
 /**
  * Works similar to Flash Messages, but renders alerts in current page, not after redirect
- * 
+ *
  * @author LeonardoCA
+ *
+ * @property-read array $alerts
  */
 class Alerts extends \Nette\Application\UI\Control
 {
-    /** @var array */
-	private $presenter;
-	
 	/** @var array */
 	private $alerts;
-	
-	
+
+
+
 	/**
 	 * @param string $message Your message, it may be even html element which will not be escaped while rendering
 	 * @param string $type Bootstrap alert class, but instead of "alert alert-success" use just "success"
 	 * @param bool $dismiss display close icon default false
+	 * @return void
 	 */
 	public function add($message, $type = null, $dismiss = false)
 	{
 	    $this->alerts[] = array('message' => $message, 'type' => $type, 'dismiss' => $dismiss);
 	}
-	
-	
-	public function get()
+
+
+
+	/**
+	 * Get alerts
+	 * @return array
+	 */
+	public function getAlerts()
 	{
 	    return $this->alerts;
 	}
-	
 
+
+
+	/**
+	 * Delete all alerts
+	 * @return void
+	 */
 	public function clear()
 	{
 	    unset($this->alerts);
 	}
 
 
-	/**
-	 * @param \Nette\ComponentModel\Container $obj
-	 */
-	protected function attached($obj)
-	{
-		if ($obj instanceof \Nette\Application\IPresenter) {
-			$this->presenter = $this->getPresenter();
-		}
-		parent::attached($obj);
-	}
-	
-	
+
 	/**
 	 * @param string|null $class
-	 *
 	 * @return \Nette\Templating\FileTemplate
 	 */
 	protected function createTemplate($class = null)
 	{
 		$template = parent::createTemplate($class);
 		$class = $this->getReflection();
-	
+
 		$file = dirname($class->getFileName()) . '/' . $class->getShortName() . '.latte';
 		$template->setFile($file);
-	
+
 		return $template;
 	}
-	
-	
+
+
+
 	public function render()
 	{
 		$this->template->alerts = $this->alerts;

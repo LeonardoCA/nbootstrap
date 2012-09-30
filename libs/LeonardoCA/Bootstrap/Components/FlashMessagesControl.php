@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of Twitter Bootstrap Extension for Nette
  *
@@ -13,43 +12,42 @@ namespace LeonardoCA\Bootstrap\Components;
 use Nette\Utils\Html;
 
 /**
- * Renders Nette Flash Messages as Bootstrap Alerts 
- * 
- * 
+ * Renders Nette Flash Messages as Bootstrap Alerts
+ *
  * Usage:
  *
  * - insert in your Base presenter and/or Base Control following code:
- * 
- * 	protected function afterRender()  // to remove old flash message while using ajax and no new flash message is to be displayed
- *	{
- *		if ($this->isAjax()) {
- *			$this->invalidateControl('flashMessages');
- *		}
- *	}
+ * <code>
+ * protected function afterRender()  // to remove previous flash message if using ajax and no new flash message should be displayed
+ * {
+ *	  if ($this->isAjax()) {
+ *    	$this->invalidateControl('flashMessages');
+ *    }
+ * }
  *
- *	public function createComponentFlashMessages()
- *	{
+ * public function createComponentFlashMessages()
+ * {
  *		return new \LeonardoCA\Bootstrap\Components\FlashMessagesControl;
- *	}
- *
+ * }
+ * </code>
  *
  * - insert in your template:
- * 
+ * <code>
  * {snippet flashMessages}{control flashMessages}{/snippet}
- * 
- * 
+ * </code>
+ *
  * - generate Flash Messages using Bootstrap alert classes, but instead of "alert alert-success" just "success"
- * 
+ * <code>
  * $this->flashMessage("Page was saved", 'success');
- * 
- * 
+ * </code>
+ *
  * @author LeonardoCA
  */
 class FlashMessagesControl extends \Nette\Application\UI\Control
 {
 	/**
 	 * Render Flash Messages
-	 * @param closeIcon bool display close icon default true
+	 * @param closeIcon bool Display close icon - default true
 	 */
 	public function render($closeIcon = true)
 	{
@@ -57,7 +55,7 @@ class FlashMessagesControl extends \Nette\Application\UI\Control
 			$flashMessage = Html::el('div');
 			$flashMessage->class = array("alert", $flash->type ? 'alert-'.$flash->type : null);
 			$flashMessage->add('<a class="close" data-dismiss="alert" href="#">×</a>');
-			$flashMessage->add($flash->message);				
+			$flashMessage->add($flash->message);
 			echo $flashMessage;
 		}
 	}

@@ -131,6 +131,19 @@ class Html extends \Nette\Utils\Html
 
 
 
+
+
+    /**
+     * Add pull-right class to right align or float right
+     * @return \LeonardoCA\Bootstrap\Html  provides a fluent interface
+     */
+    final public function bsPullRight()
+    {
+        return $this->addClass('pull-right');
+    }
+
+
+
     /**
      * Add drop down menu to html element
      *
@@ -151,22 +164,27 @@ class Html extends \Nette\Utils\Html
      * @param \LeonardoCA\Bootstrap\Html   DropdownMenu
      * @return \LeonardoCA\Bootstrap\Html   Newly created element with dropdown
      */
-    final public function addDropDown(\LeonardoCA\Bootstrap\Html $dropdownMenu)
+    final public function addDropDown(Html $dropdownMenu)
     {
-        $container = self::el('div', array('class' => 'dropdown'));
-        $this->addAttributes(array('data-toggle' => 'dropdown'));
-        $this->class[]='dropdown-toggle';
-        $this->add(' <span class="caret"></span>');
+        $this
+        ->data('toggle', 'dropdown')
+        ->addClass('dropdown-toggle')
+        ->add(' <span class="caret"></span>');
+
+        $container = self::el('div');
         $container
+        //->addClass('dropdown')
+        ->addClass('btn-group')
         ->add($this)
         ->add($dropdownMenu);
+
         return $container;
     }
 
 
 
     /**
-     * Creates DropdownMenu - call addMenuItem and addDevider to define menu items
+     * Creates DropdownMenu - call addMenuItem and addDivider to define menu items
      * Call addDropDown on element you wish to add dropdown using element returned from this function
      * @return \LeonardoCA\Bootstrap\Html
      */
@@ -182,29 +200,39 @@ class Html extends \Nette\Utils\Html
      * Adds new menu item to dropdowns
      * @param  Html|string link text + icon
      * @param  Href Link or LazyLink
+     * @param  Add ajax class? (to ajaxify link when using nette.ajax.js)
+     * @param  Add submenu
      * @return \LeonardoCA\Bootstrap\Html  provides a fluent interface
      */
     final public function addMenuItem($htmlText, $href = '#', $ajax = false, $submenu = null)
     {
-        $anchor = self::el('a')->addAttributes(array('tabindex' => '-1'));
-        $anchor->setHtml($htmlText)->setHref($href);
+        $anchor = self::el('a')
+        ->tabindex('-1')
+        ->setHtml($htmlText)
+        ->setHref($href);
+
         if ($ajax) {
-            $anchor->class[] = 'ajax';
+            $anchor->addClass('ajax');
         }
-        $child = self::el('li')->add($anchor);
+
+        $child = self::el('li')
+        ->add($anchor);
+
         if ($submenu != null) {
+            $child->addClass('dropdown-submenu');
             $child->add($submenu);
         }
+
         return $this->add($child);
     }
 
 
 
     /**
-     * Adds new devider to dropdowns
+     * Adds new divider to dropdowns
      * @return \LeonardoCA\Bootstrap\Html  provides a fluent interface
      */
-    final public function addDevider()
+    final public function addDivider()
     {
         $child = self::el('li', array('class' => 'divider'));
         return $this->add($child);

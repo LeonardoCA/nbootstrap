@@ -1,0 +1,12 @@
+<div n:class="tabbable, $direction ? 'tabs-'.$direction">
+    <ul class="nav nav-tabs" n:inner-foreach="$control->components as $tab">
+        <li n:class="$control->active == $tab->name ? active">
+            <a href="#{$tab->name}" data-toggle="tab">{$tab->label}</a>
+        </li>
+    </ul>
+    <div class="tab-content" n:inner-foreach="$control->components as $tab">
+        <div n:class="tab-pane, $control->active == $tab->name ? active" id="{$tab->name}">
+            {control $tab->controlName}
+        </div>
+    </div>
+</div>

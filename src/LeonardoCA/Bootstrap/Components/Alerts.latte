@@ -1,6 +1,6 @@
 {if $alerts}
-<div n:foreach="$alerts as $alert" class="alert {if $alert['type']}alert-{$alert['type']}{/if}">
-    <button n:if="$alert['dismiss']" type="button" class="close" data-dismiss="alert">×</button>
-    {!$alert['message']}
-</div>
+    <div n:foreach="$alerts as $alert" class="alert {if $alert['type']}alert-{$alert['type']}{/if}">
+        <button n:if="$alert['dismiss']" type="button" class="close" data-dismiss="alert">×</button>
+        {!$alert['message']}
+    </div>
 {/if}

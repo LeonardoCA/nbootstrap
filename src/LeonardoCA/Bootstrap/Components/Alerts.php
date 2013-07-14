@@ -1,61 +1,65 @@
 <?php
+
 /**
  * This file is part of Twitter Bootstrap Extension for Nette
- *
- * Copyright (c) 2012 Leonard Odložilík
- *
+ * Copyright (c) 2012,2013 Leonard Odložilík
  * For the full copyright and license information, please view the file license.txt that was distributed with this source code.
  */
 
 namespace LeonardoCA\Bootstrap\Components;
 
-use Nette\ComponentModel\IContainer;
+use Nette\Application\UI\Control;
+use Nette\Templating\FileTemplate;
 
 /**
  * Works similar to Flash Messages, but renders alerts in current page, not after redirect
  *
  * @author LeonardoCA
- *
  * @property-read array $alerts
  */
-class Alerts extends \Nette\Application\UI\Control
+class Alerts extends Control
 {
+
 	/** @var array */
 	private $alerts;
 
 
 
 	/**
+	 * Add
+	 *
 	 * @param string $message Your message, it may be even html element which will not be escaped while rendering
-	 * @param string $type Bootstrap alert class, but instead of "alert alert-success" use just "success"
-	 * @param bool $dismiss display close icon default false
+	 * @param string $type    Bootstrap alert class, but instead of "alert alert-success" use just "success"
+	 * @param bool   $dismiss display close icon default false
 	 * @return void
 	 */
 	public function add($message, $type = null, $dismiss = false)
 	{
-	    $this->alerts[] = array('message' => $message, 'type' => $type, 'dismiss' => $dismiss);
+		$this->alerts[] = array('message' => $message, 'type' => $type, 'dismiss' => $dismiss);
 	}
 
 
 
 	/**
 	 * Get alerts
+	 *
 	 * @return array
 	 */
 	public function getAlerts()
 	{
-	    return $this->alerts;
+		return $this->alerts;
 	}
 
 
 
 	/**
 	 * Delete all alerts
+	 *
 	 * @return void
 	 */
 	public function clear()
 	{
-	    unset($this->alerts);
+		unset($this->alerts);
 	}
 
 
@@ -66,12 +70,11 @@ class Alerts extends \Nette\Application\UI\Control
 	 */
 	protected function createTemplate($class = null)
 	{
+		/** @var FileTemplate $template */
 		$template = parent::createTemplate($class);
 		$class = $this->getReflection();
-
 		$file = dirname($class->getFileName()) . '/' . $class->getShortName() . '.latte';
 		$template->setFile($file);
-
 		return $template;
 	}
 
@@ -82,4 +85,5 @@ class Alerts extends \Nette\Application\UI\Control
 		$this->template->alerts = $this->alerts;
 		$this->template->render();
 	}
+
 }

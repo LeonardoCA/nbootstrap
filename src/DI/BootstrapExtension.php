@@ -7,7 +7,7 @@
  * please view the file license.txt that was distributed with this source code.
  */
 
-namespace LeonardoCA\Bootstrap;
+namespace LeonardoCA\Bootstrap\DI;
 
 use Nette\Config\Configurator;
 use Nette\Config\CompilerExtension;

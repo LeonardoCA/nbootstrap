@@ -1,0 +1,26 @@
+{
+    "name": "leonardoca/bootstrap-extension",
+    "type": "library",
+    "description": "Nette Framework add-on for easy integration with Bootstrap from Twitter",
+    "keywords": ["nette", "twitter", "bootstrap"],
+    "authors": [
+        {
+            "name": "LeonardoCA",
+            "email": "leonard.odlozilik@gmail.com"
+        }
+    ],
+    "license":["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+    "support":{
+        "email":"leonard.odlozilik@gmail.com",
+        "issues":"https://github.com/LeonardoCA/BootstrapExtension/issues"
+    },
+    "require":{
+        "nette/nette":"*"
+    },
+    "autoload":{
+        "psr-0":{
+            "LeonardoCA\\Bootstrap\\":"src/"
+        }
+    },
+    "target-dir":"LeonardoCA/Bootstrap"
+}

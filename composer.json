@@ -1,5 +1,6 @@
 {
-	"name": "leonardoca/bootstrap-extension",
+	"name": "leonardoca/nbootstrap",
+	"replace": {"leonardoca/bootstrap-extension": "*"},
 	"type": "library",
 	"description": "Nette Framework add-on for easy integration with Bootstrap from Twitter",
 	"keywords": [
@@ -20,7 +21,7 @@
 	],
 	"support": {
 		"email": "leonard.odlozilik@gmail.com",
-		"issues": "https://github.com/LeonardoCA/BootstrapExtension/issues"
+		"issues": "https://github.com/LeonardoCA/nbootstrap/issues"
 	},
 	"require": {
 		"php": ">=5.3.0",

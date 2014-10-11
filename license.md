@@ -1,7 +1,7 @@
 Licenses
 ========
 
-Good news! You may use LeonardoCA/Bootstrap under the terms of either
+Good news! You may use LeonardoCA/nbootstrap under the terms of either
 the New BSD License or the GNU General Public License (GPL) version 2 or 3.
 
 The BSD License is recommended for most projects. It is easy to understand and it
@@ -9,7 +9,7 @@ places almost no restrictions on what you can do with the framework. If the GPL
 fits better to your project, you can use the framework under this license.
 
 You don't have to notify anyone which license you are using. You can freely
-use LeonardoCA/Bootstrap in commercial projects as long as the copyright header
+use LeonardoCA/nbootstrap in commercial projects as long as the copyright header
 remains intact.
 
 
@@ -29,7 +29,7 @@ are permitted provided that the following conditions are met:
 	this list of conditions and the following disclaimer in the documentation
 	and/or other materials provided with the distribution.
 
-	* Neither the name of "LeonardoCA/Bootstrap" nor the names of its contributors
+	* Neither the name of "LeonardoCA/nbootstrap" nor the names of its contributors
 	may be used to endorse or promote products derived from this software
 	without specific prior written permission.
 

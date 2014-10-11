@@ -9,9 +9,9 @@
 
 namespace LeonardoCA\Bootstrap\DI;
 
-use Nette\Config\Configurator;
-use Nette\Config\CompilerExtension;
-use Nette\Config\Compiler;
+use Nette\Configurator;
+use Nette\DI\Compiler;
+use Nette\DI\CompilerExtension;
 
 /**
  * Registers Bootstrap Macros with Latte filter
